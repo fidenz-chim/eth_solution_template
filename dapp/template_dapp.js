@@ -7,7 +7,7 @@ browserify template_dapp.js -o main.js
 var INFURAIO_TOKEN = "chim_himidumage";
 var PROVIDER_NODE = 'https://ropsten.infura.io/' + INFURAIO_TOKEN;
 var currentChainId = 3;
-var CONTRACT_ABI_MAT = JSON.parse('[ { "constant": true, "inputs": [], "name": "getValue", "outputs": [ { "name": "", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [ { "name": "val", "type": "uint256" } ], "name": "addValue", "outputs": [], "payable": true, "stateMutability": "payable", "type": "function" }, { "constant": false, "inputs": [], "name": "resetValue", "outputs": [], "payable": true, "stateMutability": "payable", "type": "function" }, { "inputs": [], "payable": false, "stateMutability": "nonpayable", "type": "constructor" } ]');
+var CONTRACT_ABI_ADD = JSON.parse('[ { "constant": true, "inputs": [], "name": "getValue", "outputs": [ { "name": "", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [ { "name": "val", "type": "uint256" } ], "name": "addValue", "outputs": [], "payable": true, "stateMutability": "payable", "type": "function" }, { "constant": false, "inputs": [], "name": "resetValue", "outputs": [], "payable": true, "stateMutability": "payable", "type": "function" }, { "inputs": [], "payable": false, "stateMutability": "nonpayable", "type": "constructor" } ]');
 
 var CONTRACT_CODE_ADD = '0x6060604052341561000f57600080fd5b6000808190555060ec806100246000396000f3006060604052600436106053576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806316e9fe81146058578063209652551460605780635b9af12b146086575b600080fd5b605e609c565b005b3415606a57600080fd5b607060a5565b6040518082815260200191505060405180910390f35b609a600480803590602001909190505060ae565b005b60008081905550565b60008054905090565b806000808282540192505081905550505600a165627a7a723058207ddd45e839106929eafa927e15598691cfa2754d95c1b12cd77bed3c35869dd20029';
 
@@ -62,7 +62,7 @@ function onShowValueButtonClick(){
             console.log("getCurrentValue", result);
             var val = result;
             var str= "getCurrentValue - ".concat(result);
-            alert(str);
+            addRowToConsole(str);
         }
         else
             console.error(error);
@@ -86,4 +86,30 @@ function onResetValueButtonClick(){
 
 var web3jsrCallaback = function (data){
     console.log("web3jsrCallaback - ", data);
+    setTxnHash(data.functionName,data.message);
+}
+
+function addRowToConsole(rowContent){
+
+    var temp = document.createElement("div");
+    temp.innerHTML = getHTMLBlock(rowContent);
+
+    var parent = document.getElementById('txnConsole');
+    parent.insertBefore(temp,parent.firstChild);
+
+}
+
+function getHTMLBlock(content){
+    var html;
+    html = '<div class="txnrow">' + content + '</div>';
+    return html;
+}
+
+
+function setTxnHash(callerName, txnHash){
+    document.getElementById('txnHash').value = txnHash;
+    var url = "https://ropsten.etherscan.io/tx/" + txnHash;
+    var link = '<a href="' + url + '" target="_blank">'+txnHash+'<img border="0" alt="W3Schools" src="https://ropsten.etherscan.io/images/favicon2.ico" width="15" height="15"></a>';
+
+    addRowToConsole("   Txn Hash for " + callerName + " - " + link );
 }

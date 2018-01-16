@@ -1,4 +1,5 @@
 .DS_Store
 build
+main.js
 truffle-config.js
 dapp/node_modules
