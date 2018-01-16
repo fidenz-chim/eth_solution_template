@@ -4,7 +4,7 @@ package this js file (template_dapp.js) with required packages using command bel
 browserify template_dapp.js -o main.js
 
 */
-var INFURAIO_TOKEN = "chim_himidumage";
+var INFURAIO_TOKEN = "<infura_token>";
 var PROVIDER_NODE = 'https://ropsten.infura.io/' + INFURAIO_TOKEN;
 var currentChainId = 3;
 var CONTRACT_ABI_ADD = JSON.parse('[ { "constant": true, "inputs": [], "name": "getValue", "outputs": [ { "name": "", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [ { "name": "val", "type": "uint256" } ], "name": "addValue", "outputs": [], "payable": true, "stateMutability": "payable", "type": "function" }, { "constant": false, "inputs": [], "name": "resetValue", "outputs": [], "payable": true, "stateMutability": "payable", "type": "function" }, { "inputs": [], "payable": false, "stateMutability": "nonpayable", "type": "constructor" } ]');
@@ -13,8 +13,8 @@ var CONTRACT_CODE_ADD = '0x6060604052341561000f57600080fd5b6000808190555060ec806
 
 var CONTRACT_ADDRESS_ADD = "0xe0ba26d4ff33796d3e6c69d7f9c0842aa82bebd3";
 
-var CONTRACT_OWNER_ADDR = "0x00002d5cc95777ed0f1dbcac9b5a30fb1868eea4"; //This account should have an Ether balance
-var CONTRACT_OWNER_PVTK = "27f1693deb0dcf2b845c52c78f72bdacd3b9027eb65bcb577ee414600f4e9ae1";
+var CONTRACT_OWNER_ADDR = "<owner_address>"; //This account should have an Ether balance
+var CONTRACT_OWNER_PVTK = "<owner_private_key>";
 
 var LIST_INDEX = '0';
 
