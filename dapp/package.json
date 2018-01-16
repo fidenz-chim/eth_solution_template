@@ -1,0 +1,28 @@
+{
+  "name": "template_dapp",
+  "version": "1.0.0",
+  "description": "Simple Dapp for Ethereum based solutions template",
+  "main": "template_dapp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fidenz-chim/eth_solution_template.git"
+  },
+  "keywords": [
+    "ethereum",
+    "dapp",
+    "web3",
+    "web3js-raw"
+  ],
+  "author": "Chim Himidumage",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fidenz-chim/eth_solution_template/issues"
+  },
+  "homepage": "https://github.com/fidenz-chim/eth_solution_template#readme",
+  "dependencies": {
+    "web3js-raw": "0.0.1-beta.5"
+  }
+}
